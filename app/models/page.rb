@@ -1,6 +1,7 @@
 class Page
 	include Mongoid::Document
 	include Mongoid::Attributes::Dynamic
+	include Mongoid::Timestamps
 	include Mongoid::Slug
 
 	field :title, type: String
@@ -12,6 +13,8 @@ class Page
 
 	validates :title, presence: true
 	validate :validate_template
+
+	before_save :validate_slug
 
 	##
 	# @brief Returns a map of supported templates, that
@@ -25,6 +28,10 @@ class Page
 		}
 	end
 
+	def slug=( custom_slug )
+		@custom_slug = custom_slug
+	end
+
 	private
 		##
 		# @brief Makes sure that user doesn't pass forbidden
@@ -36,4 +43,10 @@ class Page
 			end
 		end
 
+		##
+		# @brief Checks if a custom slug has been passed.
+		##
+		def validate_slug
+			self._slugs = [ @custom_slug ] unless @custom_slug.blank?
+		end
 end

@@ -73,4 +73,15 @@ describe Page do
 
 		expect( new_page.title ).to eq( "Home" )
 	end
+
+	it "accepts custom slug" do
+		custom_slug = "custom-slug"
+
+		custom_page = Page.create(
+			title: "another page",
+			slug: custom_slug
+		)
+
+		expect( custom_page.slug ).to eq( custom_slug )
+	end
 end
