@@ -5,7 +5,7 @@ class Ability
 		@user = user || User.new
 
 		if @user.role
-			send( @user.role )
+			send( @user.role.title.to_sym )
 		end
 	end
 
