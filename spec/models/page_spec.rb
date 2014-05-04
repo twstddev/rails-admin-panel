@@ -53,11 +53,13 @@ describe Page do
 	end
 
 	it "sets default value to properties" do
-		@page.properties = ""
-		@page.save
+		@another_page = Page.create(
+			title: "About",
+			slug: "about"
+		)
 
-		expect( @page.properties ).to be_a( Hash )
-		expect( @page.properties ).to eq( {} )
+		expect( @another_page.properties ).to be_a( Hash )
+		expect( @another_page.properties ).to eq( {} )
 	end
 
 	it "validates template existence" do
