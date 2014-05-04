@@ -14,7 +14,6 @@ describe Page do
 
 		@page = Page.new( 
 			title: "Home",
-			slug: "home",
 			template: "home",
 			properties: custom_properties
 		)
@@ -28,19 +27,18 @@ describe Page do
 	end
 
 	it "has unique slug" do
-		Page.create( 
-			title: "Another page",
-			slug: "home"
+		another_page = Page.create( 
+			title: "Home",
 		)
 
 		@page.save
 
-		expect( @page ).to have( 1 ).error_on( :slug )
+		expect( another_page.slugs ).to include( "home" )
+		expect( @page.slugs ).not_to include( "home" )
 	end
 
 	it "generates slug from title" do
 		@page.title = "Another title"
-		@page.slug = ""
 		@page.save
 
 		expect( @page.slug ).to eq( "another-title" )
@@ -53,13 +51,13 @@ describe Page do
 	end
 
 	it "sets default value to properties" do
-		@another_page = Page.create(
+		another_page = Page.create(
 			title: "About",
 			slug: "about"
 		)
 
-		expect( @another_page.properties ).to be_a( Hash )
-		expect( @another_page.properties ).to eq( {} )
+		expect( another_page.properties ).to be_a( Hash )
+		expect( another_page.properties ).to eq( {} )
 	end
 
 	it "validates template existence" do
@@ -67,5 +65,12 @@ describe Page do
 		@page.save
 
 		expect( @page ).to have( 1 ).error_on( :template )
+	end
+
+	it "returns page by slug" do
+		@page.save
+		new_page = Page.find "home"
+
+		expect( new_page.title ).to eq( "Home" )
 	end
 end

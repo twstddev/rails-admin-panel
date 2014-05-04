@@ -1,12 +1,14 @@
 class Page
 	include Mongoid::Document
 	include Mongoid::Attributes::Dynamic
+	include Mongoid::Slug
 
 	field :title, type: String
-	field :slug, type: String
 	field :body, type: String
 	field :template, type: String
 	field :properties, type: Hash, default: {}
+
+	slug :title
 
 	validates :title, presence: true
 	validate :validate_template
