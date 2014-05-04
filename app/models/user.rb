@@ -31,6 +31,7 @@ class User
 	validates :email, presence: true
 
 	embeds_one :user_profile
+	belongs_to :user_role
 
 	## Confirmable
 	# field :confirmation_token,   type: String
