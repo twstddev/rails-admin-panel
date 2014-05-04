@@ -33,4 +33,15 @@ describe User do
 
 		expect( @user ).not_to have( 0 ).error_on( :email )
 	end
+
+	it "responds to role" do
+		role = UserRole.create( 
+			title: "admin"
+		)
+
+		@user.role = role
+		@user.save
+
+		expect( @user.has_role?( :admin ) ).to eq( true )
+	end
 end

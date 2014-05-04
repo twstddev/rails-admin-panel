@@ -31,7 +31,7 @@ class User
 	validates :email, presence: true
 
 	embeds_one :user_profile
-	belongs_to :user_role
+	belongs_to :role, class_name: "UserRole"
 
 	## Confirmable
 	# field :confirmation_token,   type: String
@@ -43,4 +43,16 @@ class User
 	# field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
 	# field :unlock_token,    type: String # Only if unlock strategy is :email or :both
 	# field :locked_at,       type: Time
+
+	##
+	# @brief Checks if the user is included into the
+	# given role
+	#
+	# @param symbol role is the role to check against
+	# @return boolean comparison result
+	##
+	def has_role?( role )
+		return self.role.title.to_sym == role if self.role
+		false
+	end
 end
