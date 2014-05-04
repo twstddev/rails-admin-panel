@@ -20,6 +20,8 @@ describe MenuItem do
 	end
 
 	it "can have children" do
+		@menu_item.save
+
 		@menu_item.children.create(
 			title: "About",
 			url: "about"

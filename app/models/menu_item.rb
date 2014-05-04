@@ -1,5 +1,10 @@
 class MenuItem
   include Mongoid::Document
+  include Mongoid::Timestamps
+  include Mongoid::Ancestry
+
+  has_ancestry
+
   field :title, type: String
   field :url, type: String
 

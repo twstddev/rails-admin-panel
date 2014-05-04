@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem "mongoid", git: "git://github.com/mongoid/mongoid.git"
 gem "mongoid_slug"
+gem "mongoid-ancestry"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

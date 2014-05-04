@@ -72,6 +72,8 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.3)
     minitest (4.7.5)
+    mongoid-ancestry (0.4.1)
+      mongoid
     mongoid_slug (3.2.1)
       mongoid (> 3.0)
       stringex (~> 2.0)
@@ -175,6 +177,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mongoid!
+  mongoid-ancestry
   mongoid_slug
   rails (= 4.0.0)
   rspec
