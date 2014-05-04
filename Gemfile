@@ -29,6 +29,7 @@ gem "mongoid", git: "git://github.com/mongoid/mongoid.git"
 gem "mongoid_slug"
 gem "mongoid-ancestry"
 gem "devise"
+gem "cancan"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
