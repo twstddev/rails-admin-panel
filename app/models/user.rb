@@ -30,6 +30,8 @@ class User
 	validates :username, uniqueness: true
 	validates :email, presence: true
 
+	embeds_one :user_profile
+
 	## Confirmable
 	# field :confirmation_token,   type: String
 	# field :confirmed_at,         type: Time
