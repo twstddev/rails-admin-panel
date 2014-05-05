@@ -20,7 +20,7 @@ class Admin::MenuItemsController < ApplicationController
 
 		if @menu_item.save
 			flash[ :success ] = "A new menu item has been created"
-			redirect_to edit_admin_menu_item_path( @menu_item )
+			redirect_to admin_menu_items_path( @menu_item )
 		else
 			render :new
 		end

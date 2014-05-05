@@ -2,6 +2,7 @@ RailsAdminPanel::Application.routes.draw do
   namespace :admin do
     resources :pages
     resources :menu_items
+    resources :users
   end
 
   devise_for :users

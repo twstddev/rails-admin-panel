@@ -49,8 +49,8 @@ describe Admin::MenuItemsController do
 				expect( flash[ :success ] ).not_to be_blank
 			end
 
-			it "redirects to edit page" do
-				expect( response ).to redirect_to( edit_admin_menu_item_path( assigns( :menu_item ) ) )
+			it "redirects to index page" do
+				expect( response ).to redirect_to( admin_menu_items_path( assigns( :menu_item ) ) )
 			end
 		end
 
