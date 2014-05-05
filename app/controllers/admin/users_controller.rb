@@ -1,5 +1,5 @@
-class Admin::UsersController < ApplicationController
-	append_before_action :check_permission
+class Admin::UsersController < Admin::AdminController
+	include CheckPermissions
 
 	def index
 		@users = User.all.order_by( :created_at.asc )
@@ -49,9 +49,5 @@ class Admin::UsersController < ApplicationController
 	private
 		def permit_params
 			params.require( :user ).permit( :username, :email, :first_name, :last_name, :password, :password_confirmation )
-		end
-
-		def check_permission
-			redirect_to admin_pages_path unless can? :manage, User
 		end
 end

@@ -5,7 +5,10 @@ RailsAdminPanel::Application.routes.draw do
     resources :users
   end
 
-  resources :pages, only: [ :index, :show ]
+  namespace :api do
+	  resources :pages, only: [ :index, :show ]
+	  resources :menu_items, only: [ :index ]
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

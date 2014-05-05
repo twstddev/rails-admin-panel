@@ -1,4 +1,6 @@
 class Admin::PagesController < Admin::AdminController
+	include CheckPermissions
+
 	def index
 		@pages = Page.all.order_by( :title.asc )
 	end

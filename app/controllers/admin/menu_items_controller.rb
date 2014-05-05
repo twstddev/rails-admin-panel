@@ -1,5 +1,5 @@
-class Admin::MenuItemsController < ApplicationController
-	append_before_action :check_permission
+class Admin::MenuItemsController < Admin::AdminController
+	include CheckPermissions
 
 	def index
 		@menu_items = MenuItem.all
@@ -50,9 +50,5 @@ class Admin::MenuItemsController < ApplicationController
 	private
 		def permit_params
 			params.require( :menu_item ).permit( :title, :url, :parent )
-		end
-
-		def check_permission
-			redirect_to admin_pages_path unless can? :manage, MenuItem
 		end
 end
