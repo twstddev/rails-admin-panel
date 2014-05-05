@@ -97,55 +97,50 @@ describe Admin::MenuItemsController do
 	context "as editor" do
 		login_editor
 
-		before :each do
-			@menu_item = MenuItem.create(
-				title: "Home",
-				url: "home"
-			)
-		end
+		#@menu_item = MenuItem.create(
+			#title: "Home",
+			#url: "home"
+		#)
 
-		let( :index_path ) { admin_menu_items_path }
 
-		it "denies access to index" do
-			get :index
-
-			it_behaves_like "a forbidden action"
-		end
-
-		it "denies access to show" do
-			get :show, id: @menu_item.id
-
-			it_behaves_like "a forbidden action"
-		end
-
-		it "denies access to new" do
-			get :new
-
-			it_behaves_like "a forbidden action"
-		end
-
-		it "denies access to create" do
-			post :create, menu_item: { title: "About", url: "about" }
-
-			it_behaves_like "a forbidden action"
-		end
-
-		it "denies access to edit" do
-			get :edit, id: @menu_item.id
-
-			it_behaves_like "a forbidden action"
-		end
-
-		it "denies access to update" do
-			patch :update, id: @menu_item.id, menu_item: { title: "Home 2" }
-
-			it_behaves_like "a forbidden action"
-		end
-
-		it "denies access to destroy" do
-			delete :destroy, id: @menu_item.id
-
-			it_behaves_like "a forbidden action"
+		it_behaves_like "a forbidden action", [
+			{
+				verb: :get,
+				action: :index,
+				params: {}
+			}
+			#{
+				#verb: :get, 
+				#action: :show,
+				#params: { id: @menu_item.id }
+			#}
+			#{
+				#verb: :get,
+				#action: :new,
+				#params: {} 
+			#},
+			#{
+				#verb: :post,
+				#action: :create,
+				#params: { menu_item: { title: "About", url: "about" } } 
+			#},
+			#{
+				#verb: :get,
+				#action: :edit,
+				#params: { id: @menu_item.id } 
+			#},
+			#{
+				#verb: :patch,
+				#action: :update,
+				#params: { id: @menu_item.id, menu_item: { title: "Home 2" } } 
+			#},
+			#{
+				#verb: :delete,
+				#action: :destroy,
+				#params: { id: @menu_item.id } 
+			#}
+		] do
+			let( :index_path ) { admin_pages_path }
 		end
 	end
 end
