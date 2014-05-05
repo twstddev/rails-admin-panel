@@ -30,9 +30,10 @@ gem "mongoid_slug"
 gem "mongoid-ancestry"
 gem "devise"
 gem "cancan"
-gem "twitter-bootstrap-rails"
+gem "bootstrap-sass"
 gem "formtastic"
 gem "formtastic-bootstrap"
+gem "compass-rails"
 
 
 group :doc do

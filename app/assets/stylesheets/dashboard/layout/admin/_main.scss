@@ -1,0 +1,75 @@
+@import "compass/css3/border-radius";
+
+/*
+Main classes.
+*/
+.search-form {
+	width: 200px;
+}
+
+.admin-panel {
+	h4 {
+		margin-top: 7px;
+		margin-bottom: 7px;
+		margin-right: 1em;
+	}
+}
+
+.admin-table {
+	.actions {
+		width: 200px;
+	}
+}
+
+.admin-pills {
+	ul {
+		padding-left: 2em;
+	}
+}
+
+.admin-model-form {
+	.thumbnail {
+		text-align: center;
+	}
+}
+
+/*
+Username dropdown.
+*/
+.username-dropdown {
+	.navbar-nav & > a {
+		padding-top: 6px;
+		padding-bottom: 6px;
+	}
+
+	.username-image {
+		height: 36px;
+		border: 1px solid #ffffff;
+		margin-right: 1em;
+	}
+}
+
+/*
+Sidebar.
+*/
+.admin-sidebar {
+	position: fixed;
+	left: 0;
+	top: 50px;
+	width: $admin-sidebar-width;
+	bottom: 0;
+	background: #f7f7f7;
+	border-right: 1px solid #dddddd;
+
+	.list-group-item {
+		border-right: 0;
+		@include border-radius( 0 !important );
+	}
+}
+
+/*
+Main admin area.
+*/
+.main-admin-page {
+	padding: 80px 40px 40px $admin-sidebar-width + 40;
+}
