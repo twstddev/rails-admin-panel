@@ -28,9 +28,9 @@ describe Admin::PagesController do
 	end
 
 	it "redirects to page edit on show" do
-		get :show, @page
+		get :show, id: @page.id
 
-		expect( response ).to redirect_to( edit_admin_page_path )
+		expect( response ).to redirect_to( edit_admin_page_path( @page ) )
 	end
 
 	it "sets a new record for new action" do
@@ -41,64 +41,53 @@ describe Admin::PagesController do
 
 	describe "POST 'create'" do
 		before :each do
-			@new_page = Page.new(
-				title: "Contact"
-			)
-
-			post :create, @new_page
+			post :create, page: { title: "Contact" }
 		end
 
 		it "creates a new record" do
-			expect( @new_page ).to be_persisted
+			expect( assigns( :page ) ).to be_persisted
 		end
 
 		it "sets a success flash message" do
-			expect( falsh[ :success ] ).to exist
+			expect( flash[ :success ] ).not_to be_blank
 		end
 
 		it "redirects to edit page" do
-			expect( response ).to redirect_to( edit_admin_page_path )
+			expect( response ).to redirect_to( edit_admin_page_path( assigns( :page ) ) )
 		end
 	end
 
 	it "sets an existing page to edit template" do
-		get :edit, @page
+		get :edit, id: @page.id
 
-		expect( assigns( :page ).title ).to eq( @page.title )
+		expect( assigns( :page ) ).to eq( @page )
 	end
 
 	describe "PATCH 'update'" do
 		before :each do
-			let( :another_title ) { "my new title" }
-			@page.title = another_title
-
-			patch :update, @page
+			patch :update, id: @page.id, page: { title: "Another title" }
 		end
 
 		it "updates a page" do
-			expect( @page ).to be_changed
+			expect( assigns( :page ) ).to be_persisted
 		end
 
 		it "sets a success flash message" do
-			expect( flash[ :success ] ).to exist
-		end
-
-		it "redirects to edit page" do
-			expect( response ).to redirect_to( edit_admin_page_path )
+			expect( flash[ :success ] ).not_to be_blank
 		end
 	end
 
 	describe "DELETE 'destroy'" do
 		before :each do
-			delete :destroy, @page
+			delete :destroy, id: @page.id
 		end
 
 		it "deletes a page" do
-			expect( @page ).to be_destroyed
+			expect( assigns( :page ) ).to be_destroyed
 		end
 
 		it "sets success message" do
-			expect( flash[ :success ] ).to exist
+			expect( flash[ :success ] ).not_to be_blank
 		end
 
 		it "redirect to index page" do
