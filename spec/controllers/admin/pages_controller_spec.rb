@@ -90,7 +90,7 @@ describe Admin::PagesController do
 			expect( flash[ :success ] ).not_to be_blank
 		end
 
-		it "redirect to index page" do
+		it "redirects to index page" do
 			expect( response ).to redirect_to( admin_pages_path )
 		end
 	end
