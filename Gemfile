@@ -30,6 +30,10 @@ gem "mongoid_slug"
 gem "mongoid-ancestry"
 gem "devise"
 gem "cancan"
+gem "twitter-bootstrap-rails"
+gem "formtastic"
+gem "formtastic-bootstrap"
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
