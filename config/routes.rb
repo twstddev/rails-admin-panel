@@ -1,6 +1,7 @@
 RailsAdminPanel::Application.routes.draw do
   namespace :admin do
     resources :pages
+    resources :menu_items
   end
 
   devise_for :users
