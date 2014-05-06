@@ -1,0 +1,32 @@
+<% flash.each do |key, message| %>
+<p class="alert alert-<%= key %> alert-dismissable">
+	<button class="close" type="button" data-dismiss="true" aria-hidden="true">&times;</button>
+	<%= message %>
+</p>
+<% end %>
+<section class="admin-panel panel panel-default">
+	<div class="panel-heading">
+		<h4 class="pull-left">
+			Menu
+		</h4>
+		<%= link_to new_admin_menu_item_path, class: "btn btn-success pull-left" do %>
+			<%= content_tag( :i, "", class: "glyphicon glyphicon-file" ) %>
+			Add new
+		<% end %>
+		<div class="clearfix"></div>
+	</div>
+	<div class="panel-body">
+		<% if @menu_items.any? %>
+			<ul class="nav nav-pills nav-stacked admin-pills">
+			<% @menu_items.each do |menu_item| %>
+				<li>
+					<%= link_to edit_admin_menu_item_path( menu_item ), class: "bg-info" do %>
+						<%= content_tag( :i, "", class: "glyphicon glyphicon-move" ) %>
+						<%= menu_item.title %>
+					<% end %>
+				</li>
+			<% end %>
+			</ul>
+		<% end %>
+	</div>
+</section>
