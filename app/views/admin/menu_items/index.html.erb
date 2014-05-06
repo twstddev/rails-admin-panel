@@ -19,10 +19,14 @@
 		<% if @menu_items.any? %>
 			<ul class="nav nav-pills nav-stacked admin-pills">
 			<% @menu_items.each do |menu_item| %>
-				<li>
-					<%= link_to edit_admin_menu_item_path( menu_item ), class: "bg-info" do %>
+				<li class="bg-info">
+					<%= link_to edit_admin_menu_item_path( menu_item ), class: "" do %>
 						<%= content_tag( :i, "", class: "glyphicon glyphicon-move" ) %>
 						<%= menu_item.title %>
+					<% end %>
+					<%= button_to admin_menu_item_path( menu_item.id ), method: :delete, confirm: "Are you sure?", class: "btn btn-xs btn-danger" do %>
+						<%= content_tag( :i, "", class: "glyphicon glyphicon-trash" ) %>
+						Delete
 					<% end %>
 				</li>
 			<% end %>

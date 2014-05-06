@@ -1,0 +1,34 @@
+<% if menu_item.errors.any? %>
+	<div class="alert alert-danger">
+	<% menu_item.errors.full_messages.each do |message| %>
+		<p>
+			<%= message %>
+		</p>
+	<% end %>
+	</div>
+<% end %>
+<%= semantic_form_for menu_item, url: admin_menu_item_path( menu_item ), class: "admin-model-form" do |f| %>
+	<section class="container-fluid">
+		<div class="row">
+			<div class="col-lg-9">
+				<%= f.input :title, input_html: { class: "form-control input-lg" } %>
+				<%= f.input :url %>
+			</div>
+			<aside class="col-lg-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Actions
+					</div>
+					<div class="panel-body">
+						<%= f.action :submit, as: :button, button_html: { class: "btn btn-block btn-success" } %>
+						<%= link_to admin_pages_path, class: "btn btn-block btn-warning" do %>
+							<%= content_tag( :i, "", class: "glyphicon glyphicon-remove" ) %>
+							Cancel
+						<% end %>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</section>
+<% end %>
+

@@ -8,7 +8,7 @@ class Admin::MenuItemsController < Admin::AdminController
 	def show
 		menu_item = MenuItem.find( params[ :id ] )
 
-		redirect_to edit_admin_menu_item_path( menu_item )
+		redirect_to admin_menu_items_path
 	end
 
 	def new
@@ -20,7 +20,7 @@ class Admin::MenuItemsController < Admin::AdminController
 
 		if @menu_item.save
 			flash[ :success ] = "A new menu item has been created"
-			redirect_to admin_menu_items_path( @menu_item )
+			redirect_to admin_menu_items_path
 		else
 			render :new
 		end
@@ -35,8 +35,10 @@ class Admin::MenuItemsController < Admin::AdminController
 		
 		if @menu_item.update_attributes( permit_params )
 			flash[ :success ] = "A menu item has been updated"
+			redirect_to admin_menu_items_path
+		else
+			redirect_to
 		end
-		render :edit
 	end
 
 	def destroy
