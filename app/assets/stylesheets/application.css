@@ -10,6 +10,7 @@
  *
  *= require_self
  *# require_tree .
- *= require dashboard/main
+ *= require formtastic-bootstrap
  *= require bootstrap
+ *= require dashboard/main
  */

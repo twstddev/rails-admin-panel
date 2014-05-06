@@ -31,7 +31,7 @@ gem "mongoid-ancestry"
 gem "devise"
 gem "cancan"
 gem "bootstrap-sass"
-gem "formtastic"
+gem "formtastic", github: "justinfrench/formtastic"
 gem "formtastic-bootstrap"
 gem "compass-rails"
 

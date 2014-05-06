@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/justinfrench/formtastic.git
+  revision: 16a528a37d84f6c51ddbf196597e9472abc4e255
+  specs:
+    formtastic (2.3.0.rc3)
+      actionpack (>= 3.2.13)
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: e93a4837b0266db46c24aae172e184f57c847b04
   specs:
@@ -76,8 +83,6 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     ffi (1.9.3-x86-mingw32)
-    formtastic (2.2.1)
-      actionpack (>= 3.0)
     formtastic-bootstrap (3.0.0)
       formtastic (>= 2.2)
     fssm (0.2.10)
@@ -205,7 +210,7 @@ DEPENDENCIES
   compass-rails
   database_cleaner
   devise
-  formtastic
+  formtastic!
   formtastic-bootstrap
   jbuilder (~> 1.2)
   jquery-rails
