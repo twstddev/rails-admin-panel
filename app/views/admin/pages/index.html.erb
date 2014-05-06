@@ -38,11 +38,13 @@
 			<% @pages.each do |page| %>
 			<tr>
 				<td>
-					<%= link_to page.title, edit_admin_page_path( page ) %>
+					<%= link_to page.title, edit_admin_page_path( page.id ) %>
 				</td>
-				<td>/</td>
+				<td>
+					<%= page.slug %>
+				</td>
 				<td class="actions">
-					<%= link_to edit_admin_page_path( page ), class: "btn btn-xs btn-warning" do %>
+					<%= link_to edit_admin_page_path( page.id ), class: "btn btn-xs btn-warning" do %>
 						<%= content_tag( :i, "", class: "glyphicon glyphicon-pencil" ) %>
 						Edit
 					<% end %>

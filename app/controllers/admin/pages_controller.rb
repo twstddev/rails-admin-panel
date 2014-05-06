@@ -20,7 +20,7 @@ class Admin::PagesController < Admin::AdminController
 
 		if @page.save
 			flash[ :success ] = "A new page has been created"
-			redirect_to edit_admin_page_path( @page )
+			redirect_to edit_admin_page_path( @page.id )
 		else
 			render :new
 		end
