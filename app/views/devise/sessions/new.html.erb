@@ -5,8 +5,14 @@
 		</div>
 		<div class="panel-body">
 			<%= semantic_form_for( resource, as: resource_name, url: session_path( resource_name ) ) do |f| %>
+				<% flash.each do |name, msg| %>
+					<% if msg.is_a? String %>
+					<p class="alert alert-danger">
+						<%= msg %>
+					</p>
+					<% end %>
 
-				<%= resource.inspect %>
+				<% end %>
 				<%= f.input :username, append_content: content_tag( :span, content_tag( :i, "", class: "glyphicon glyphicon-user" ), class: "input-group-addon" ) %>
 				<%= f.input :password, append_content: content_tag( :span, content_tag( :i, "", class: "glyphicon glyphicon-lock" ), class: "input-group-addon" ) %>
 
