@@ -18,6 +18,14 @@ Main classes.
 .admin-table {
 	.actions {
 		width: 200px;
+
+		.btn {
+			float: left;
+		}
+
+		.button_to .btn {
+			margin-left: 1em;
+		}
 	}
 }
 

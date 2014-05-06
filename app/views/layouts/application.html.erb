@@ -42,19 +42,19 @@
 	<aside class="admin-sidebar">
 		<ul class="list-group">
 			<li>
-				<%= link_to admin_pages_path, class: "list-group-item #{is_current_page( admin_pages_path ) }" do %>
+				<%= link_to admin_pages_path, class: "list-group-item #{is_current_page( 'pages' ) }" do %>
 					<%= content_tag( :i, "", class: "glyphicon glyphicon-folder-close" ) %>
 					Pages
 				<% end %>
 			</li>
 			<li>
-				<%= link_to admin_menu_items_path, class: "list-group-item #{is_current_page( admin_menu_items_path ) }" do %>
+				<%= link_to admin_menu_items_path, class: "list-group-item #{is_current_page( 'menu_items' ) }" do %>
 					<%= content_tag( :i, "", class: "glyphicon glyphicon-tasks" ) %>
 					Menu
 				<% end %>
 			</li>
 			<li>
-				<%= link_to admin_users_path, class: "list-group-item #{is_current_page( admin_users_path ) }" do %>
+				<%= link_to admin_users_path, class: "list-group-item #{is_current_page( 'users' ) }" do %>
 					<%= content_tag( :i, "", class: "glyphicon glyphicon-user" ) %>
 					Users
 				<% end %>
