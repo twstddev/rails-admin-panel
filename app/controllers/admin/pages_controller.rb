@@ -10,7 +10,7 @@ class Admin::PagesController < Admin::AdminController
 			@pages = Page.all
 		end
 
-		@pages = @pages.order_by( :title.asc )
+		@pages = @pages.page( params[ :page ] ).per( 10 ).order_by( :title.asc )
 	end
 
 	def show

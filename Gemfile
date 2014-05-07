@@ -35,6 +35,8 @@ gem "formtastic", github: "justinfrench/formtastic"
 gem "formtastic-bootstrap"
 gem "compass-rails"
 gem "mongoid_search"
+gem "kaminari"
+gem "kaminari-bootstrap"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
