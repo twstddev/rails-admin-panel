@@ -58,4 +58,5 @@ group :development do
 	gem "database_cleaner"
 	gem "spork-rails"
 	gem "capybara"
+	gem "thin"
 end

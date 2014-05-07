@@ -12,6 +12,7 @@ class Admin::UsersController < Admin::AdminController
 
 	def new
 		@user = User.new
+		@roles = UserRole.all
 	end
 
 	def create
@@ -26,6 +27,7 @@ class Admin::UsersController < Admin::AdminController
 	end
 	
 	def edit
+		@roles = UserRole.all
 		@user = User.find( params[ :id ] )
 	end
 
@@ -33,21 +35,28 @@ class Admin::UsersController < Admin::AdminController
 		@user = User.find( params[ :id ] )
 		if @user.update_attributes( permit_params )
 			flash[ :success ] = "A user has been updated"
+			redirect_to edit_admin_user_path( @user )
+		else
+			render :edit
 		end
 
-		redner :edit
 	end
 
 	def destroy
 		@user = User.find( params[ :id ] )
-		@user.destroy
 
-		flash[ :success ] = "A user has been deleted"
-		redirect_to admin_users_page
+		if @user == current_user
+			flash[ :danger ] = "You cannot remove yourself"
+		else
+			@user.destroy
+			flash[ :success ] = "A user has been deleted"
+		end
+
+		redirect_to admin_users_path
 	end
 
 	private
 		def permit_params
-			params.require( :user ).permit( :username, :email, :first_name, :last_name, :password, :password_confirmation )
+			params.require( :user ).permit( :username, :email, :password, :password_confirmation, :role_id, profile: [ :first_name, :last_name ] )
 		end
 end

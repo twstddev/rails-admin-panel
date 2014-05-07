@@ -29,8 +29,11 @@ class User
 	validates :username, presence: true
 	validates :username, uniqueness: true
 	validates :email, presence: true
+	validates :role, presence: true
+	validates :password, confirmation: true
+	#validates :password_confirmation, presence: true
 
-	embeds_one :user_profile
+	embeds_one :profile, class_name: "UserProfile"
 	belongs_to :role, class_name: "UserRole"
 
 	## Confirmable
