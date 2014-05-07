@@ -3,6 +3,7 @@ class Page
 	include Mongoid::Attributes::Dynamic
 	include Mongoid::Timestamps
 	include Mongoid::Slug
+	include Mongoid::Search
 
 	field :title, type: String
 	field :body, type: String
@@ -15,6 +16,8 @@ class Page
 	validate :validate_template
 
 	before_save :validate_slug
+
+	search_in :title
 
 	##
 	# @brief Returns a map of supported templates, that

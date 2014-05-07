@@ -85,6 +85,7 @@ GEM
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.0.2)
+    fast-stemmer (1.0.2)
     ffi (1.9.3-x86-mingw32)
     formtastic-bootstrap (3.0.0)
       formtastic (>= 2.2)
@@ -106,6 +107,9 @@ GEM
     minitest (4.7.5)
     mongoid-ancestry (0.4.1)
       mongoid
+    mongoid_search (0.3.2)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 3.0.0)
     mongoid_slug (3.2.1)
       mongoid (> 3.0)
       stringex (~> 2.0)
@@ -223,6 +227,7 @@ DEPENDENCIES
   jquery-rails
   mongoid!
   mongoid-ancestry
+  mongoid_search
   mongoid_slug
   rails (= 4.0.0)
   rspec

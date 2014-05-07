@@ -2,7 +2,15 @@ class Admin::PagesController < Admin::AdminController
 	include CheckPermissions
 
 	def index
-		@pages = Page.all.order_by( :title.asc )
+		@search = params[ :search ]
+
+		unless @search.blank?
+			@pages = Page.full_text_search( @search )
+		else
+			@pages = Page.all
+		end
+
+		@pages = @pages.order_by( :title.asc )
 	end
 
 	def show

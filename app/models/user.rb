@@ -1,6 +1,7 @@
 class User
 	include Mongoid::Document
 	include Mongoid::Timestamps
+	include Mongoid::Search
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
@@ -32,6 +33,8 @@ class User
 	validates :role, presence: true
 	validates :password, confirmation: true
 	#validates :password_confirmation, presence: true
+
+	search_in :username
 
 	embeds_one :profile, class_name: "UserProfile"
 	belongs_to :role, class_name: "UserRole"

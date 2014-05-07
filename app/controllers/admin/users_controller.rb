@@ -2,7 +2,15 @@ class Admin::UsersController < Admin::AdminController
 	include CheckPermissions
 
 	def index
-		@users = User.all.order_by( :created_at.asc )
+		@search = params[ :search ]
+
+		unless @search.blank?
+			@users = User.full_text_search( @search )
+		else
+			@users = User.all
+		end
+
+		@users = @users.order_by( :created_at.asc )
 	end
 
 	def show
