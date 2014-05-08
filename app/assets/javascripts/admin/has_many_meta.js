@@ -55,7 +55,6 @@
 		 * and applies a sortable functionality to them.
 		 */
 		PrivateScope.prototype.makeSetsSortable = function() {
-			console.log( $( this.set_selector ) );
 			$( this.set_selector ).sortable( {
 				items : "> fieldset"
 			} );
@@ -67,17 +66,12 @@
 		 */
 		PrivateScope.prototype.appendFields = function( button ) {
 			var $button = $( button );
-
 			var $closest_fields_container = $button.prev( this.set_selector );
-
 			var current_index = $closest_fields_container.data( "index" );
-
 			var placeholder = new RegExp( $button.data( "placeholder" ), "g" );
-
 			var fields_html = $button.data( "html" ).replace( placeholder, current_index );
 
 			$closest_fields_container.append( fields_html );
-
 			$closest_fields_container.data( "index", current_index + 1 );
 		}
 

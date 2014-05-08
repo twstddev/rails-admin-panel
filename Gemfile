@@ -39,7 +39,10 @@ gem "kaminari"
 gem "kaminari-bootstrap"
 gem "jquery-ui-rails"
 #gem "cocoon"
-gem "nested_form"
+#gem "nested_form"
+gem 'rich', github: 'twstddev/rich'
+#gem "rich", path: "/rich"
+gem "paperclip"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

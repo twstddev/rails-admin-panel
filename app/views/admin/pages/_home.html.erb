@@ -5,6 +5,7 @@
 	<h4>Gallery</h4>
 	<%= properties.has_many_meta :gallery do |gallery| %>
 		<%= gallery.input :title %>
-		<%= gallery.input :image %>
+		<%= gallery.input :description, as: :rich %>
+		<%= gallery.input :image, as: :custom_rich_picker %>
 	<% end %>
 <% end %>

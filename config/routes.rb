@@ -1,4 +1,5 @@
 RailsAdminPanel::Application.routes.draw do
+  mount Rich::Engine => '/rich', :as => 'rich'
   namespace :admin do
     resources :pages
     resources :menu_items
