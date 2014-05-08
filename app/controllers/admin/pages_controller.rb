@@ -58,6 +58,9 @@ class Admin::PagesController < Admin::AdminController
 	private
 
 		def permit_params
-			params.require( :page ).permit( :title, :slug, :body, :template, :properties )
+			#params.require( :page ).permit( :title, :slug, :body, :template ) do |whitelisted|
+				#whitelisted[ :properties ] = params[ :page ][ :properties ]
+			#end
+			params.require( :page ).permit!
 		end
 end

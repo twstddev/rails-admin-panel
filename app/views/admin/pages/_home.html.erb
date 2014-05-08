@@ -1,0 +1,5 @@
+<h4>Extra</h4>
+<%= f.semantic_fields_for :properties, OpenStruct.new( f.object.properties ) do |properties| %>
+	<%= properties.input :subtitle %>
+	<%= properties.input :description, as: :text %>
+<% end %>
