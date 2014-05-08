@@ -15,8 +15,9 @@ GIT
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
 
-PATH
-  remote: /rich
+GIT
+  remote: git://github.com/twstddev/rich.git
+  revision: bc69be023dca382d53ac0e5cde36f5c3d32abb5c
   specs:
     rich (1.4.7)
       jquery-rails

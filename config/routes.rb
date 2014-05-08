@@ -5,6 +5,7 @@ RailsAdminPanel::Application.routes.draw do
     resources :menu_items
 	post "menu_items/sort" => "menu_items#sort", :as => :menu_items_sort
     resources :users
+	get "/" => "pages#index"
   end
 
   namespace :api do
