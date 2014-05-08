@@ -2,6 +2,7 @@ RailsAdminPanel::Application.routes.draw do
   namespace :admin do
     resources :pages
     resources :menu_items
+	post "menu_items/sort" => "menu_items#sort", :as => :menu_items_sort
     resources :users
   end
 

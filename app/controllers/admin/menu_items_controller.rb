@@ -2,7 +2,7 @@ class Admin::MenuItemsController < Admin::AdminController
 	include CheckPermissions
 
 	def index
-		@menu_items = MenuItem.all
+		@menu_items = MenuItem.where( ancestry: nil ).order( :position.asc )
 	end
 
 	def show
@@ -49,8 +49,37 @@ class Admin::MenuItemsController < Admin::AdminController
 		redirect_to admin_menu_items_path
 	end
 
+	def sort
+		if params[ :items ]
+			save_sorted_items params[ :items ]
+		end
+
+		render nothing: true, status: 200
+	end
+
 	private
 		def permit_params
 			params.require( :menu_item ).permit( :title, :url, :parent )
+		end
+
+		##
+		# @brief Goes through the list of items and 
+		# saves them with assigned positions.
+		##
+		def save_sorted_items( items, parent = nil )
+			items.each do |index, object|
+				if object[ :id ]
+					current_id = object[ :id ]
+
+					current_menu_item = MenuItem.find( current_id )
+					current_menu_item.parent_id = parent
+					current_menu_item.position = index
+					current_menu_item.save
+
+					if object[ :children ]
+						save_sorted_items object[ :children ], current_id
+					end
+				end
+			end
 		end
 end

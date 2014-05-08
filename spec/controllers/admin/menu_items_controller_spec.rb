@@ -27,7 +27,7 @@ describe Admin::MenuItemsController do
 		it "redirects to menu item edit on show" do
 			get :show, id: @menu_item.id
 
-			expect( response ).to redirect_to( edit_admin_menu_item_path( @menu_item ) )
+			expect( response ).to redirect_to( admin_menu_items_path )
 		end
 
 		it "sets a new record for new action" do
@@ -50,7 +50,7 @@ describe Admin::MenuItemsController do
 			end
 
 			it "redirects to index page" do
-				expect( response ).to redirect_to( admin_menu_items_path( assigns( :menu_item ) ) )
+				expect( response ).to redirect_to( admin_menu_items_path )
 			end
 		end
 
@@ -141,6 +141,20 @@ describe Admin::MenuItemsController do
 			#}
 		] do
 			let( :index_path ) { admin_pages_path }
+		end
+	end
+
+	describe "POST 'sort'" do
+		context "anonymous" do
+			it_behaves_like "a forbidden action", [
+				{
+					verb: :post,
+					action: :sort,
+					params: { items: [] }
+				}
+			]
+
+			let( :index_path ) { new_user_session_path }
 		end
 	end
 end
