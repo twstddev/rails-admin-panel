@@ -38,6 +38,8 @@ gem "mongoid_search"
 gem "kaminari"
 gem "kaminari-bootstrap"
 gem "jquery-ui-rails"
+#gem "cocoon"
+gem "nested_form"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

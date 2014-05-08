@@ -126,6 +126,7 @@ GEM
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
     multi_json (1.9.3)
+    nested_form (0.3.2)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     nokogiri (1.6.1-x86-mingw32)
@@ -240,6 +241,7 @@ DEPENDENCIES
   mongoid-ancestry
   mongoid_search
   mongoid_slug
+  nested_form
   rails (= 4.0.0)
   rspec
   rspec-rails

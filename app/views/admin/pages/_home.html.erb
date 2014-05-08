@@ -2,4 +2,9 @@
 <%= f.semantic_fields_for :properties, OpenStruct.new( f.object.properties ) do |properties| %>
 	<%= properties.input :subtitle %>
 	<%= properties.input :description, as: :text %>
+	<h4>Gallery</h4>
+	<%= properties.has_many_meta :gallery do |gallery| %>
+		<%= gallery.input :title %>
+		<%= gallery.input :image %>
+	<% end %>
 <% end %>
